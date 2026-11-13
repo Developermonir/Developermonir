@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="490" height="236" viewBox="0 0 490 236" role="img" aria-label="Typeset — Fluid typography generator. Build a type scale and copy the CSS clamp() values." fill="none">
+<title>Typeset — Fluid typography generator. Build a type scale and copy the CSS clamp() values.</title>
+<rect x=".5" y=".5" width="489" height="235" rx="16" fill="#0A0A0C"/>
+<rect x=".5" y=".5" width="489" height="235" rx="16" fill="#121216" stroke="#24242C"/>
+<text x="28" y="42" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="600" fill="#FF6B1A" text-anchor="start" letter-spacing="1.2" >FREE TOOL</text>
+<g transform="translate(426 26)"><path d="M3 6V2h24v4 M15 2v32 M10 34h10 M24 16h10 M29 16v18" stroke="#55555F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="26" y="86" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-size="27" font-weight="700" fill="#F5F5F7" text-anchor="start" letter-spacing="-0.7" >Typeset</text>
+<text x="28" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#8C8C99" text-anchor="start" letter-spacing="0" >Fluid typography generator. Build a type</text>
+<text x="28" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#8C8C99" text-anchor="start" letter-spacing="0" >scale and copy the CSS clamp() values.</text>
+<path d="M0 177.5H490" stroke="#24242C"/>
+<rect x="28" y="194" width="51.28" height="26" rx="13" fill="#18181E" stroke="#2E2E38"/>
+<text x="53.64" y="211.5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#F5F5F7" text-anchor="middle" letter-spacing="0" >Live</text>
+<rect x="89.28" y="194" width="39.045" height="26" rx="13" stroke="#2E2E38"/>
+<text x="108.80250000000001" y="211.5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#8C8C99" text-anchor="middle" letter-spacing="0" >CSS</text>
+<rect x="136.325" y="194" width="67.10499999999999" height="26" rx="13" stroke="#2E2E38"/>
+<text x="169.8775" y="211.5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#8C8C99" text-anchor="middle" letter-spacing="0" >clamp()</text>
+<path d="M444 216 L460 200 M448 200 H460 V212" stroke="#F5F5F7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

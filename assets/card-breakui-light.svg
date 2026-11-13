@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="490" height="236" viewBox="0 0 490 236" role="img" aria-label="BreakUI — Ready-made Breakdance templates and sections for agencies and freelancers." fill="none">
+<title>BreakUI — Ready-made Breakdance templates and sections for agencies and freelancers.</title>
+<rect x=".5" y=".5" width="489" height="235" rx="16" fill="#FBFBF9"/>
+<rect x=".5" y=".5" width="489" height="235" rx="16" fill="#FFFFFF" stroke="#E6E6E0"/>
+<text x="28" y="42" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11" font-weight="600" fill="#F05A0A" text-anchor="start" letter-spacing="1.2" >MARKETPLACE</text>
+<g transform="translate(426 26)"><path d="M2 2h14v14H2z M20 2h14v14H20z M2 20h14v14H2z M20 20h14v14H20z" stroke="#A3A3AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="26" y="86" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-size="27" font-weight="700" fill="#111114" text-anchor="start" letter-spacing="-0.7" >BreakUI</text>
+<text x="28" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#66666F" text-anchor="start" letter-spacing="0" >Ready-made Breakdance templates and sections</text>
+<text x="28" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#66666F" text-anchor="start" letter-spacing="0" >for agencies and freelancers.</text>
+<path d="M0 177.5H490" stroke="#E6E6E0"/>
+<rect x="28" y="194" width="51.28" height="26" rx="13" fill="#F3F3EF" stroke="#D9D9D2"/>
+<text x="53.64" y="211.5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#111114" text-anchor="middle" letter-spacing="0" >Live</text>
+<rect x="89.28" y="194" width="81.13499999999999" height="26" rx="13" stroke="#D9D9D2"/>
+<text x="129.8475" y="211.5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#66666F" text-anchor="middle" letter-spacing="0" >Templates</text>
+<rect x="178.415" y="194" width="88.14999999999999" height="26" rx="13" stroke="#D9D9D2"/>
+<text x="222.48999999999998" y="211.5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" font-weight="500" fill="#66666F" text-anchor="middle" letter-spacing="0" >Breakdance</text>
+<path d="M444 216 L460 200 M448 200 H460 V212" stroke="#111114" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
