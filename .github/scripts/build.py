@@ -147,9 +147,9 @@ class Canvas:
 def hero(t):
     W, H = 1000, 520
     c = Canvas(W, H, "Moniruzzaman Monir — WordPress & Breakdance developer. 7+ years, 700+ websites, 120+ clients.")
-    c.text(0, 22, "Moniruzzaman Monir", "ts", 11, t["muted"], ls=2.6, upper=True)
-    c.text(W / 2, 22, "Developer · Plugin author", "ts", 11, t["muted"], anchor="middle", ls=2.6, upper=True)
-    c.text(W, 22, "Tangail, Bangladesh", "ts", 11, t["muted"], anchor="end", ls=2.6, upper=True)
+    c.text(0, 22, "Moniruzzaman Monir", "ts", 13, t["muted"], ls=2.6, upper=True)
+    c.text(W / 2, 22, "Developer · Plugin author", "ts", 13, t["muted"], anchor="middle", ls=2.6, upper=True)
+    c.text(W, 22, "Tangail, Bangladesh", "ts", 13, t["muted"], anchor="end", ls=2.6, upper=True)
     c.line(0, 40.5, W, 40.5, t["line2"])
     c.text(-4, 160, "Moniruzzaman", "ts", 92, t["text"], ls=-2.5)
     c.text(-4, 262, "Monir", "ts", 92, t["text"], ls=-2.5)
@@ -166,10 +166,10 @@ def hero(t):
         if i:
             c.line(cw * i, 372, cw * i, 470, t["line"])
         c.text(x, 425, n, "ts", 48, t["text"], ls=-1)
-        c.text(x + 2, 458, lab, "ts", 10.5, t["muted"], ls=2.2, upper=True)
+        c.text(x + 2, 458, lab, "ts", 12.5, t["muted"], ls=2.2, upper=True)
     c.line(0, 490.5, W, 490.5, t["line"])
-    c.text(0, 514, "Available for new projects", "ni", 15, t["accent"])
-    c.text(W, 514, "moniir.dev", "ts", 11, t["muted"], anchor="end", ls=2.6, upper=True)
+    c.text(0, 514, "Available for new projects", "ni", 18, t["accent"])
+    c.text(W, 514, "moniir.dev", "ts", 13, t["muted"], anchor="end", ls=2.6, upper=True)
     return c.render()
 
 
@@ -178,9 +178,9 @@ def hero(t):
 def section(t, num, name, note):
     W, H = 1000, 74
     c = Canvas(W, H, name)
-    c.text(0, 40, num, "ts", 12, t["accent"], ls=2)
+    c.text(0, 40, num, "ts", 14, t["accent"], ls=2)
     c.text(44, 44, name, "ts", 34, t["text"], ls=-0.6)
-    c.text(W, 42, note, "ni", 17, t["muted"], anchor="end")
+    c.text(W, 42, note, "ni", 20, t["muted"], anchor="end")
     c.line(0, 72.5, W, 72.5, t["line2"])
     return c.render()
 
@@ -190,12 +190,12 @@ def section(t, num, name, note):
 def row(t, i, w, last):
     W, H = 1000, 116
     c = Canvas(W, H, f'{w["title"]} — {w["kind"]}. {" ".join(w["lines"])} {w["meta"]}')
-    c.text(0, 50, f"{i:02d}", "ts", 12, t["accent"], ls=2)
+    c.text(0, 50, f"{i:02d}", "ts", 14, t["accent"], ls=2)
     c.text(44, 58, w["title"], "ts", 38, t["text"], ls=-0.8)
-    c.text(46, 86, w["kind"], "ts", 10.5, t["muted"], ls=2.2, upper=True)
-    c.text(500, 50, w["lines"][0], "nr", 17, t["muted"])
-    c.text(500, 74, w["lines"][1], "nr", 17, t["muted"])
-    c.text(W - 26, 50, w["meta"], "ts", 12, t["text"], anchor="end", ls=1.2)
+    c.text(46, 90, w["kind"], "ts", 12.5, t["muted"], ls=2.2, upper=True)
+    c.text(470, 48, w["lines"][0], "nr", 19, t["muted"])
+    c.text(470, 75, w["lines"][1], "nr", 19, t["muted"])
+    c.text(W - 26, 50, w["meta"], "ts", 14, t["text"], anchor="end", ls=1.2)
     c.arrow(W - 12, 40, t["text"])
     c.line(0, 115.5, W, 115.5, t["line2"] if last else t["line"])
     return c.render()
@@ -215,7 +215,7 @@ def toolkit(t):
     c = Canvas(W, H, "Toolkit: " + ", ".join(i for _, its in STACK for i in its))
     for r, (label, items) in enumerate(STACK):
         y = 50 + r * 62
-        c.text(0, y, label, "ts", 10.5, t["accent"], ls=2.2, upper=True)
+        c.text(0, y, label, "ts", 12.5, t["accent"], ls=2.2, upper=True)
         x = 180
         for j, it in enumerate(items):
             x += c.text(x, y + 3, it, "nr", 22, t["text"])
@@ -240,8 +240,8 @@ def footer(t):
     c.text(W - 20, 164, "moniir.dev", "nr", 20, t["text"], anchor="end")
     c.arrow(W - 11, 151, t["text"])
     c.line(0, 210.5, W, 210.5, t["line2"])
-    c.text(0, 238, "WordPress · Breakdance · WooCommerce", "ts", 10.5, t["muted"], ls=2.2, upper=True)
-    c.text(W, 238, "Since 2019", "ts", 10.5, t["muted"], anchor="end", ls=2.2, upper=True)
+    c.text(0, 238, "WordPress · Breakdance · WooCommerce", "ts", 12.5, t["muted"], ls=2.2, upper=True)
+    c.text(W, 238, "Since 2019", "ts", 12.5, t["muted"], anchor="end", ls=2.2, upper=True)
     return c.render()
 
 
