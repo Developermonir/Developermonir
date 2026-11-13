@@ -14,12 +14,12 @@ I build WordPress websites, Breakdance plugins and templates from <img src="http
 </p>
 
 <p align="center">
-  <a href="https://moniir.dev"><img src="https://img.shields.io/badge/Website-moniir.dev-C9A27A?style=flat&labelColor=11100E" height="28" alt="Website"></a>
-  <a href="https://breakui.com"><img src="https://img.shields.io/badge/BreakUI-Templates-C9A27A?style=flat&labelColor=11100E" height="28" alt="BreakUI"></a>
-  <a href="https://wpbuilderpros.com"><img src="https://img.shields.io/badge/WPBuilderPros-Studio-C9A27A?style=flat&labelColor=11100E" height="28" alt="WPBuilderPros"></a>
-  <a href="https://profiles.wordpress.org/monir1999/"><img src="https://img.shields.io/badge/-WordPress.org-11100E?style=flat&logo=wordpress&logoColor=white" height="28" alt="WordPress.org"></a>
-  <a href="https://www.fiverr.com/sellers/developermonir5/"><img src="https://img.shields.io/badge/-Fiverr-11100E?style=flat&logo=fiverr&logoColor=1DBF73" height="28" alt="Fiverr"></a>
-  <a href="https://x.com/developermonir5"><img src="https://img.shields.io/badge/-X-11100E?style=flat&logo=x&logoColor=white" height="28" alt="X"></a>
-  <a href="mailto:contact@moniir.dev"><img src="https://img.shields.io/badge/-Mail_Me-11100E?style=flat&logo=gmail&logoColor=white" height="28" alt="Email"></a>
-  <a href="https://github.com/Developermonir"><img src="https://komarev.com/ghpvc/?username=Developermonir&label=Views&color=C9A27A&style=flat" height="28" alt="Profile views"></a>
+  <a href="https://moniir.dev"><img src="https://img.shields.io/badge/Website-moniir.dev-FF6B1A?style=flat&labelColor=0E0E0E" height="28" alt="Website"></a>
+  <a href="https://breakui.com"><img src="https://img.shields.io/badge/BreakUI-Templates-FF6B1A?style=flat&labelColor=0E0E0E" height="28" alt="BreakUI"></a>
+  <a href="https://wpbuilderpros.com"><img src="https://img.shields.io/badge/WPBuilderPros-Studio-FF6B1A?style=flat&labelColor=0E0E0E" height="28" alt="WPBuilderPros"></a>
+  <a href="https://profiles.wordpress.org/monir1999/"><img src="https://img.shields.io/badge/-WordPress.org-0E0E0E?style=flat&logo=wordpress&logoColor=white" height="28" alt="WordPress.org"></a>
+  <a href="https://www.fiverr.com/sellers/developermonir5/"><img src="https://img.shields.io/badge/-Fiverr-0E0E0E?style=flat&logo=fiverr&logoColor=1DBF73" height="28" alt="Fiverr"></a>
+  <a href="https://x.com/developermonir5"><img src="https://img.shields.io/badge/-X-0E0E0E?style=flat&logo=x&logoColor=white" height="28" alt="X"></a>
+  <a href="mailto:contact@moniir.dev"><img src="https://img.shields.io/badge/-Mail_Me-0E0E0E?style=flat&logo=gmail&logoColor=white" height="28" alt="Email"></a>
+  <a href="https://github.com/Developermonir"><img src="https://komarev.com/ghpvc/?username=Developermonir&label=Views&color=FF6B1A&style=flat" height="28" alt="Profile views"></a>
 </p>

@@ -27,8 +27,8 @@ FONTS = {  # key: (file, css family, css style, fallback stack)
 _tt = {k: TTFont(os.path.join(FONT_DIR, v[0])) for k, v in FONTS.items()}
 
 THEMES = {
-    "dark": dict(bg="#11100E", line="#2C2A26", line2="#3A3732", text="#ECE6DB",
-                 muted="#9A9388", faint="#5F5A53", accent="#C9A27A"),
+    "dark": dict(bg="#0E0E0E", line="#262626", line2="#333333", text="#F5F5F5",
+                 muted="#9A9388", faint="#5F5A53", accent="#FF6B1A"),
     "light": dict(bg="#F5F1EA", line="#DCD5C9", line2="#CBC3B5", text="#1B1916",
                   muted="#6B645A", faint="#A79F93", accent="#94653A"),
 }
@@ -101,7 +101,7 @@ def poster():
     photo = base64.b64encode(open(os.path.join(ROOT, ".github", "img", "photo.jpg"), "rb").read()).decode()
     c.add(f'<defs><clipPath id="ph"><circle cx="1190" cy="250" r="168"/></clipPath>'
           f'<radialGradient id="warm" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1190 250) scale(420)">'
-          f'<stop stop-color="{t["accent"]}" stop-opacity=".13"/><stop offset="1" stop-color="{t["accent"]}" stop-opacity="0"/></radialGradient></defs>')
+          f'<stop stop-color="{t["accent"]}" stop-opacity=".16"/><stop offset="1" stop-color="{t["accent"]}" stop-opacity="0"/></radialGradient></defs>')
     c.add(f'<rect width="{W}" height="{H}" fill="{t["bg"]}"/>')
     c.add(f'<rect width="{W}" height="{H}" fill="url(#warm)"/>')
     c.add(f'<rect x="28.5" y="28.5" width="{W-57}" height="{H-57}" stroke="{t["line"]}"/>')
