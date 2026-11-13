@@ -10,6 +10,10 @@ I build WordPress websites, Breakdance plugins and templates from <img src="http
 </p>
 
 <p align="center">
+🚀 <b>Latest:</b> <a href="https://pro.breakui.com">BreakUI Pro</a> <b>v2.0.22</b> &nbsp;·&nbsp; <a href="https://wordpress.org/plugins/breakui-preview-pass/">Preview Pass</a> <b>v1.3.0</b>
+</p>
+
+<p align="center">
   <a href="https://moniir.dev"><img src="https://img.shields.io/badge/Website-moniir.dev-C9A27A?style=flat&labelColor=11100E" height="28" alt="Website"></a>
   <a href="https://breakui.com"><img src="https://img.shields.io/badge/BreakUI-Templates-C9A27A?style=flat&labelColor=11100E" height="28" alt="BreakUI"></a>
   <a href="https://wpbuilderpros.com"><img src="https://img.shields.io/badge/WPBuilderPros-Studio-C9A27A?style=flat&labelColor=11100E" height="28" alt="WPBuilderPros"></a>

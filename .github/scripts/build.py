@@ -19,9 +19,10 @@ OUT = os.path.join(ROOT, "assets")
 FONT_DIR = os.path.join(ROOT, ".github", "fonts")
 
 FONTS = {  # key: (file, css family, css style, fallback stack)
-    "ts": ("TenorSans-Regular.ttf", "Tenor Sans", "normal", "'Tenor Sans', Optima, 'Gill Sans', sans-serif"),
-    "nr": ("Newsreader-Regular.ttf", "Newsreader", "normal", "Newsreader, Georgia, serif"),
-    "ni": ("Newsreader-Italic.ttf", "Newsreader", "italic", "Newsreader, Georgia, serif"),
+    "b": ("Poppins-Bold.ttf", "PoppinsBold", "normal", "PoppinsBold, Poppins, 'Segoe UI', sans-serif"),
+    "s": ("Poppins-SemiBold.ttf", "PoppinsSemi", "normal", "PoppinsSemi, Poppins, 'Segoe UI', sans-serif"),
+    "m": ("Poppins-Medium.ttf", "PoppinsMedium", "normal", "PoppinsMedium, Poppins, 'Segoe UI', sans-serif"),
+    "r": ("Poppins-Regular.ttf", "PoppinsRegular", "normal", "PoppinsRegular, Poppins, 'Segoe UI', sans-serif"),
 }
 _tt = {k: TTFont(os.path.join(FONT_DIR, v[0])) for k, v in FONTS.items()}
 
@@ -105,27 +106,25 @@ def poster():
     c.add(f'<rect width="{W}" height="{H}" fill="url(#warm)"/>')
     c.add(f'<rect x="28.5" y="28.5" width="{W-57}" height="{H-57}" stroke="{t["line"]}"/>')
     # masthead
-    c.text(72, 82, "WordPress · Breakdance", "ts", 15, t["muted"], ls=3.4, upper=True)
-    c.line(72, 102.5, 900, 102.5, t["line2"])
+    c.text(72, 82, "WordPress · Breakdance", "m", 14, t["muted"], ls=3, upper=True)
+    c.text(900, 82, "7+ yrs · 700+ sites · 120+ clients", "m", 14, t["muted"], anchor="end", ls=3, upper=True)
+    c.line(72, 104.5, 900, 104.5, t["line2"])
     # name
-    c.text(66, 212, "Moniruzzaman", "ts", 104, t["text"], ls=-3)
-    c.text(66, 322, "Monir", "ts", 104, t["text"], ls=-3)
-    c.text(398, 280, "builds WordPress websites,", "ni", 30, t["muted"], ls=-0.2)
-    c.text(398, 318, "Breakdance plugins & templates.", "ni", 30, t["accent"], ls=-0.2)
+    c.text(68, 200, "Meet the developer", "s", 22, t["accent"], ls=0.2)
+    c.text(64, 290, "Moniruzzaman Monir", "b", 76, t["text"], ls=-1.5)
+    c.text(70, 340, "WordPress & Breakdance Developer  |  Plugin Author", "m", 23, t["muted"], ls=0)
     # brands
-    c.line(72, 380.5, 900, 380.5, t["line2"])
+    c.line(72, 384.5, 900, 384.5, t["line2"])
     x = 72
     for i, b in enumerate(["BreakUI", "BreakUI Pro", "WPBuilderPros", "moniir.dev"]):
         if i:
-            x += c.text(x, 424, "·", "ts", 15, t["faint"], ls=3.4) + 10
-        x += c.text(x, 424, b, "ts", 15, t["text"] if i < 3 else t["accent"], ls=3.4, upper=True) + 10
+            x += c.text(x, 426, "·", "m", 14, t["faint"], ls=3) + 10
+        x += c.text(x, 426, b, "m", 14, t["text"] if i < 3 else t["accent"], ls=3, upper=True) + 10
     # photo
     c.add(f'<circle cx="1190" cy="250" r="196" stroke="{t["line2"]}"/>')
     c.add(f'<circle cx="1190" cy="250" r="178" stroke="{t["accent"]}" stroke-opacity=".7"/>')
     c.add(f'<image href="data:image/jpeg;base64,{photo}" x="1022" y="82" width="336" height="336" '
           f'clip-path="url(#ph)" preserveAspectRatio="xMidYMid slice"/>')
-    # figures on the ring
-    c.text(900, 82, "7+ yrs · 700+ sites · 120+ clients", "ts", 15, t["muted"], anchor="end", ls=3.4, upper=True)
     return c.render()
 
 
