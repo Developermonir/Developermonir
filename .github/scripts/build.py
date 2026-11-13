@@ -1,18 +1,14 @@
-"""Build the profile README artwork (dark + light SVGs) from one data source.
+"""Build the profile README artwork (the cover poster).
 
 Fonts are subset and embedded in each SVG, because GitHub shows SVGs as <img>
 and an <img> cannot load web fonts.
 
-Usage: python .github/scripts/build.py            # use versions in versions.json
-       python .github/scripts/build.py --fetch    # refresh versions first
+Usage: python .github/scripts/build.py
 Requires: pip install fonttools brotli
 """
 import base64
 import io
-import json
 import os
-import sys
-import urllib.request
 from xml.sax.saxutils import escape
 
 from fontTools import subset
@@ -21,7 +17,6 @@ from fontTools.ttLib import TTFont
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUT = os.path.join(ROOT, "assets")
 FONT_DIR = os.path.join(ROOT, ".github", "fonts")
-VERSIONS = os.path.join(ROOT, ".github", "versions.json")
 
 FONTS = {  # key: (file, css family, css style, fallback stack)
     "ts": ("TenorSans-Regular.ttf", "Tenor Sans", "normal", "'Tenor Sans', Optima, 'Gill Sans', sans-serif"),
@@ -36,52 +31,6 @@ THEMES = {
     "light": dict(bg="#F5F1EA", line="#DCD5C9", line2="#CBC3B5", text="#1B1916",
                   muted="#6B645A", faint="#A79F93", accent="#94653A"),
 }
-
-
-# ---------------------------------------------------------------- data
-
-def load_versions():
-    try:
-        return json.load(open(VERSIONS))
-    except Exception:
-        return {"breakui-pro": "2.0.22", "breakui-preview-pass": "1.3.0"}
-
-
-def fetch_versions(v):
-    def get(url):
-        req = urllib.request.Request(url, headers={"User-Agent": "profile-readme"})
-        with urllib.request.urlopen(req, timeout=20) as r:
-            return json.load(r)
-
-    try:
-        v["breakui-pro"] = get("https://pro.breakui.com/wp-json/bu-pro/v1/update")["version"] or v["breakui-pro"]
-    except Exception as e:
-        print("BreakUI Pro version fetch failed:", e)
-    try:
-        v["breakui-preview-pass"] = get(
-            "https://api.wordpress.org/plugins/info/1.2/?action=plugin_information&request%5Bslug%5D=breakui-preview-pass"
-        )["version"] or v["breakui-preview-pass"]
-    except Exception as e:
-        print("Preview Pass version fetch failed:", e)
-    json.dump(v, open(VERSIONS, "w"), indent=2)
-    return v
-
-
-def work(v):
-    return [
-        dict(slug="breakui-pro", kind="Premium plugin", title="BreakUI Pro",
-             lines=["Add-on elements for the Breakdance builder:", "Smart Video, Contact Hub, PDF Viewer, Ask Buddy."],
-             meta=f"v{v['breakui-pro']}"),
-        dict(slug="preview-pass", kind="Free · WordPress.org", title="Preview Pass",
-             lines=["Private preview links for client drafts.", "No login, no staging site, nothing to unlock."],
-             meta=f"v{v['breakui-preview-pass']}"),
-        dict(slug="breakui", kind="Marketplace", title="BreakUI",
-             lines=["Breakdance templates and sections", "for agencies and freelancers."], meta="Live"),
-        dict(slug="wpbuilderpros", kind="Studio", title="WPBuilderPros",
-             lines=["WordPress builds, redesigns, WooCommerce,", "speed, SEO and fixes."], meta="Live"),
-        dict(slug="typeset", kind="Free tool", title="Typeset",
-             lines=["A fluid type scale generator that writes", "the CSS clamp() values for you."], meta="Live"),
-    ]
 
 
 # ---------------------------------------------------------------- drawing kit
@@ -142,134 +91,53 @@ class Canvas:
                 + "\n".join(self.parts) + "\n</svg>\n")
 
 
-# ---------------------------------------------------------------- hero
+# ---------------------------------------------------------------- poster
 
-def hero(t):
-    W, H = 1000, 520
-    c = Canvas(W, H, "Moniruzzaman Monir — WordPress & Breakdance developer. 7+ years, 700+ websites, 120+ clients.")
-    c.text(0, 22, "Moniruzzaman Monir", "ts", 13, t["muted"], ls=2.6, upper=True)
-    c.text(W / 2, 22, "Developer · Plugin author", "ts", 13, t["muted"], anchor="middle", ls=2.6, upper=True)
-    c.text(W, 22, "Tangail, Bangladesh", "ts", 13, t["muted"], anchor="end", ls=2.6, upper=True)
-    c.line(0, 40.5, W, 40.5, t["line2"])
-    c.text(-4, 160, "Moniruzzaman", "ts", 92, t["text"], ls=-2.5)
-    c.text(-4, 262, "Monir", "ts", 92, t["text"], ls=-2.5)
-    sx = 330
-    c.text(sx, 205, "builds WordPress websites,", "ni", 27, t["muted"], ls=-0.2)
-    c.text(sx, 241, "Breakdance plugins and templates —", "ni", 27, t["muted"], ls=-0.2)
-    c.text(sx, 277, "carefully, and fast.", "ni", 27, t["accent"], ls=-0.2)
-    c.line(0, 352.5, W, 352.5, t["line"])
-    figs = [("7+", "Years in WordPress"), ("700+", "Websites shipped"),
-            ("120+", "Clients worldwide"), ("350+", "Projects on Fiverr")]
-    cw = W / 4
-    for i, (n, lab) in enumerate(figs):
-        x = cw * i + (0 if i == 0 else 24)
+def poster():
+    t = THEMES["dark"]
+    W, H = 1500, 500
+    c = Canvas(W, H, "Moniruzzaman Monir — WordPress & Breakdance developer. BreakUI, BreakUI Pro, WPBuilderPros. moniir.dev")
+    photo = base64.b64encode(open(os.path.join(ROOT, ".github", "img", "photo.jpg"), "rb").read()).decode()
+    c.add(f'<defs><clipPath id="ph"><circle cx="1190" cy="250" r="168"/></clipPath>'
+          f'<radialGradient id="warm" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1190 250) scale(420)">'
+          f'<stop stop-color="{t["accent"]}" stop-opacity=".13"/><stop offset="1" stop-color="{t["accent"]}" stop-opacity="0"/></radialGradient></defs>')
+    c.add(f'<rect width="{W}" height="{H}" fill="{t["bg"]}"/>')
+    c.add(f'<rect width="{W}" height="{H}" fill="url(#warm)"/>')
+    c.add(f'<rect x="28.5" y="28.5" width="{W-57}" height="{H-57}" stroke="{t["line"]}"/>')
+    # masthead
+    c.text(72, 82, "WordPress · Breakdance", "ts", 15, t["muted"], ls=3.4, upper=True)
+    c.line(72, 102.5, 900, 102.5, t["line2"])
+    # name
+    c.text(66, 212, "Moniruzzaman", "ts", 104, t["text"], ls=-3)
+    c.text(66, 322, "Monir", "ts", 104, t["text"], ls=-3)
+    c.text(398, 280, "builds WordPress websites,", "ni", 30, t["muted"], ls=-0.2)
+    c.text(398, 318, "Breakdance plugins & templates.", "ni", 30, t["accent"], ls=-0.2)
+    # brands
+    c.line(72, 380.5, 900, 380.5, t["line2"])
+    x = 72
+    for i, b in enumerate(["BreakUI", "BreakUI Pro", "WPBuilderPros", "moniir.dev"]):
         if i:
-            c.line(cw * i, 372, cw * i, 470, t["line"])
-        c.text(x, 425, n, "ts", 48, t["text"], ls=-1)
-        c.text(x + 2, 458, lab, "ts", 12.5, t["muted"], ls=2.2, upper=True)
-    c.line(0, 490.5, W, 490.5, t["line"])
-    c.text(0, 514, "Available for new projects", "ni", 18, t["accent"])
-    c.text(W, 514, "moniir.dev", "ts", 13, t["muted"], anchor="end", ls=2.6, upper=True)
-    return c.render()
-
-
-# ---------------------------------------------------------------- section header
-
-def section(t, num, name, note):
-    W, H = 1000, 74
-    c = Canvas(W, H, name)
-    c.text(0, 40, num, "ts", 14, t["accent"], ls=2)
-    c.text(44, 44, name, "ts", 34, t["text"], ls=-0.6)
-    c.text(W, 42, note, "ni", 20, t["muted"], anchor="end")
-    c.line(0, 72.5, W, 72.5, t["line2"])
-    return c.render()
-
-
-# ---------------------------------------------------------------- work row
-
-def row(t, i, w, last):
-    W, H = 1000, 116
-    c = Canvas(W, H, f'{w["title"]} — {w["kind"]}. {" ".join(w["lines"])} {w["meta"]}')
-    c.text(0, 50, f"{i:02d}", "ts", 14, t["accent"], ls=2)
-    c.text(44, 58, w["title"], "ts", 38, t["text"], ls=-0.8)
-    c.text(46, 90, w["kind"], "ts", 12.5, t["muted"], ls=2.2, upper=True)
-    c.text(470, 48, w["lines"][0], "nr", 19, t["muted"])
-    c.text(470, 75, w["lines"][1], "nr", 19, t["muted"])
-    c.text(W - 26, 50, w["meta"], "ts", 14, t["text"], anchor="end", ls=1.2)
-    c.arrow(W - 12, 40, t["text"])
-    c.line(0, 115.5, W, 115.5, t["line2"] if last else t["line"])
-    return c.render()
-
-
-# ---------------------------------------------------------------- toolkit
-
-STACK = [
-    ("Build with", ["WordPress", "Breakdance", "WooCommerce", "Divi", "Gutenberg"]),
-    ("Write in", ["PHP", "JavaScript", "TypeScript", "Twig", "CSS", "SQL"]),
-    ("Ship on", ["Figma", "Git", "Hostinger", "Cloudflare", "WP Engine"]),
-]
-
-
-def toolkit(t):
-    W, H = 1000, 196
-    c = Canvas(W, H, "Toolkit: " + ", ".join(i for _, its in STACK for i in its))
-    for r, (label, items) in enumerate(STACK):
-        y = 50 + r * 62
-        c.text(0, y, label, "ts", 12.5, t["accent"], ls=2.2, upper=True)
-        x = 180
-        for j, it in enumerate(items):
-            x += c.text(x, y + 3, it, "nr", 22, t["text"])
-            if j < len(items) - 1:
-                x += 12
-                x += c.text(x, y + 3, "/", "nr", 22, t["faint"])
-                x += 12
-        c.line(0, y + 25.5, W, y + 25.5, t["line"])
-    return c.render()
-
-
-# ---------------------------------------------------------------- footer
-
-def footer(t):
-    W, H = 1000, 250
-    c = Canvas(W, H, "Have a project in mind? Write to contact@moniir.dev or visit moniir.dev")
-    c.text(-3, 92, "Have a project", "ts", 64, t["text"], ls=-1.6)
-    w = c.text(-3, 166, "in mind?", "ts", 64, t["text"], ls=-1.6)
-    c.text(w + 22, 164, "Let’s talk.", "ni", 40, t["accent"], ls=-0.4)
-    c.text(W, 124, "contact@moniir.dev", "nr", 20, t["text"], anchor="end")
-    c.line(W - c.width("contact@moniir.dev", "nr", 20), 133.5, W, 133.5, t["line2"])
-    c.text(W - 20, 164, "moniir.dev", "nr", 20, t["text"], anchor="end")
-    c.arrow(W - 11, 151, t["text"])
-    c.line(0, 210.5, W, 210.5, t["line2"])
-    c.text(0, 238, "WordPress · Breakdance · WooCommerce", "ts", 12.5, t["muted"], ls=2.2, upper=True)
-    c.text(W, 238, "Since 2019", "ts", 12.5, t["muted"], anchor="end", ls=2.2, upper=True)
+            x += c.text(x, 424, "·", "ts", 15, t["faint"], ls=3.4) + 10
+        x += c.text(x, 424, b, "ts", 15, t["text"] if i < 3 else t["accent"], ls=3.4, upper=True) + 10
+    # photo
+    c.add(f'<circle cx="1190" cy="250" r="196" stroke="{t["line2"]}"/>')
+    c.add(f'<circle cx="1190" cy="250" r="178" stroke="{t["accent"]}" stroke-opacity=".7"/>')
+    c.add(f'<image href="data:image/jpeg;base64,{photo}" x="1022" y="82" width="336" height="336" '
+          f'clip-path="url(#ph)" preserveAspectRatio="xMidYMid slice"/>')
+    # figures on the ring
+    c.text(900, 82, "7+ yrs · 700+ sites · 120+ clients", "ts", 15, t["muted"], anchor="end", ls=3.4, upper=True)
     return c.render()
 
 
 # ---------------------------------------------------------------- write
 
 def main():
-    v = load_versions()
-    if "--fetch" in sys.argv:
-        v = fetch_versions(v)
     os.makedirs(OUT, exist_ok=True)
     for f in os.listdir(OUT):
         if f.endswith(".svg"):
             os.remove(os.path.join(OUT, f))
-    items = work(v)
-    for name, t in THEMES.items():
-        files = {
-            f"hero-{name}.svg": hero(t),
-            f"section-work-{name}.svg": section(t, "I", "Selected work", "Plugins, products and tools"),
-            f"section-toolkit-{name}.svg": section(t, "II", "Toolkit", "What I reach for"),
-            f"section-contact-{name}.svg": section(t, "III", "Contact", "Open to new projects"),
-            f"toolkit-{name}.svg": toolkit(t),
-            f"footer-{name}.svg": footer(t),
-        }
-        for i, w in enumerate(items, 1):
-            files[f"work-{w['slug']}-{name}.svg"] = row(t, i, w, i == len(items))
-        for fn, s in files.items():
-            open(os.path.join(OUT, fn), "w", encoding="utf-8").write(s)
-    print("Built with versions:", v)
+    open(os.path.join(OUT, "poster.svg"), "w", encoding="utf-8").write(poster())
+    print("Built assets/poster.svg")
 
 
 if __name__ == "__main__":
