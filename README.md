@@ -10,7 +10,7 @@ I build WordPress websites, Breakdance plugins and templates from <img src="http
 </p>
 
 <p align="center">
-🚀 <b>Latest:</b> <a href="https://pro.breakui.com">BreakUI Pro</a> <b>v2.0.22</b> &nbsp;·&nbsp; <a href="https://wordpress.org/plugins/breakui-preview-pass/">Preview Pass</a> <b>v1.3.0</b>
+🚀 <b>Latest:</b> <a href="https://pro.breakui.com">BreakUI Pro</a> <b>v2.1.1</b> &nbsp;·&nbsp; <a href="https://wordpress.org/plugins/breakui-preview-pass/">Preview Pass</a> <b>v1.3.0</b>
 </p>
 
 <p align="center">
